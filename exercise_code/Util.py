@@ -53,7 +53,7 @@ def checkSize(path="./models/classifier_pytorch.torch"):
                 The model is too large! The size is {bcolors.colorize('red', normalized)}\
                     MB, but it must be less than 20 MB. Please simplify the model before submitting.")
         return False
-    print(f"Size: Great! The model size is {bcolors.colorize('green', normalized)} MB and is less than 20 MB.")
+    print(f"Size: The model size is {bcolors.colorize('green', normalized)} MB and is less than 20 MB.")
     return True
 
 
@@ -103,6 +103,4 @@ def test_and_save(model, val_dataloader, test_dataloader):
     save_model(model, "classifier_pytorch.p")
     if not checkSize("./models/classifier_pytorch.p"):
         return
-
-    print("the model has been saved and is ready to be submitted.")
     _, test_acc = model.getAcc(test_dataloader)
